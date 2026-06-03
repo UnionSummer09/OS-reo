@@ -1,0 +1,40 @@
+[package]
+name = "os-reo"
+version = "0.1.0"
+edition = "2021"
+description = "AI Agent Game - An intelligent multi-agent game environment"
+authors = ["UnionSummer09"]
+
+[dependencies]
+# Core dependencies
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Logging and diagnostics
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Utilities
+uuid = { version = "1.0", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+rand = "0.8"
+thiserror = "1.0"
+
+# Optional: AI/ML dependencies (uncomment as needed)
+# ndarray = "0.15"
+# tch = "0.15"  # PyTorch bindings
+# ort = "1"     # ONNX Runtime
+
+[dev-dependencies]
+tokio-test = "0.4"
+criterion = "0.5"
+
+[[bench]]
+name = "agent_bench"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
